@@ -1,0 +1,21 @@
+Package: OptSurrogateSurv
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Xuan",
+           family = "Wang",
+           role = c("aut", "cre"),
+           email = "xwang@hsph.harvard.edu",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: Estimate the PTE (proportion of treatment explained) for optimally transformed surrogate with censored primary outcome.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: 
+    MASS,
+    mvtnorm,
+    stats,
+    survival
+Depends: 
+    R (>= 2.10)
