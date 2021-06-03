@@ -11,7 +11,9 @@ The goal of OptSurrogateSurv is to nonparametrically estimate the PTE (proportio
 You can install the released version of OptSurrogateSurv from [CRAN](https://github.com/wx202/OptSurrogateSurv.git) with:
 
 ``` r
-install.packages("OptSurrogateSurv")
+install.packages("devtools")
+library(devtools)
+devtools::install_github("wx202/OptSurrogateSurv")
 ```
 
 ## Example
@@ -20,7 +22,18 @@ This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(OptSurrogateSurv)
-## basic example code
+
+data("sysdata")
+t.0=data.example$t.0
+t=data.example$t
+xob=data.example$data$xob
+s.ob=data.example$data$s.ob
+deltaob=data.example$data$deltaob
+aob=data.example$data$aob
+
+out=pte.survival(xob,s.ob,deltaob,aob,t,t.0,varind=1,re=10)
+out$pte.est
+#> [1] 0.8336715
 ```
 
 What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:

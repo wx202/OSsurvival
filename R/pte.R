@@ -25,6 +25,7 @@ pte.survival=function(xob,s.ob,deltaob,aob,t,t.0,varind=0,re=100){
   s=seq(from, to, by = step)
 
   data=cbind(xob,yob,deltaob,s.ob,aob)
+  set.seed(2021)
   indexindex=sample(n, n/2, replace = FALSE)
   data1=data[indexindex,]
   data2=data[-indexindex,]
