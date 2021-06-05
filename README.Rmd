@@ -13,24 +13,28 @@ knitr::opts_chunk$set(
 )
 ```
 
-# OptSurrogateSurv: Quantifying the Feasibility of Shortening Clinical Trial Duration Using Surrogate Markers
+## OptSurrogateSurv: Quantifying the Feasibility of Shortening Clinical Trial Duration Using Surrogate Markers
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of OptSurrogateSurv is to nonparametrically estimate the PTE (proportion of treatment on the primary outcome explained) by an optimally transformation of surrogate marker measured at an earlier time. The primary outcome measured at a later time may be subject to censoring.
+The goal of OptSurrogateSurv is to nonparametrically estimate the PTE (proportion of treatment on the primary outcome explained by a surrogate) of an optimally transformation of surrogate marker measured at an earlier time. The primary outcome measured at a later time may be subject to censoring.
 
 ## Installation
 
 You can install the released version of OptSurrogateSurv from [CRAN](https://github.com/wx202/OptSurrogateSurv.git) with:
 
-``` r
-install.packages("devtools")
+<!-- ``` r -->
+<!-- install.packages("devtools") -->
+<!-- library(devtools) -->
+<!-- devtools::install_github("wx202/OptSurrogateSurv") -->
+<!-- ``` -->
+
+```  
+# install.packages("devtools")
 library(devtools)
 devtools::install_github("wx202/OptSurrogateSurv")
-
 ```
-
 
 ## Example
 
@@ -39,36 +43,45 @@ This is a basic example which shows you how to solve a common problem:
 ```{r example}
 library(OptSurrogateSurv)
 
+# load data
 data("sysdata")
+# time surrogate is measured
 t.0=data.example$t.0
+# time primary outcome is measured
 t=data.example$t
+# observed survival time
 xob=data.example$data$xob
+# surrogate information at t.0
 s.ob=data.example$data$s.ob
+# event indicator
 deltaob=data.example$data$deltaob
+# treatment indicator
 aob=data.example$data$aob
 
-out=pte.survival(xob,s.ob,deltaob,aob,t,t.0,varind=1,re=10)
+# main estination function, varind: whether to estimate variance; re:number of perturbation for resampling
+out=pte.survival(xob,s.ob,deltaob,aob,t,t.0,varind=0,re=100) 
+# estimated PTE
 out$pte.est
+# estimated g1
+out$g1.est
+# estimated g2(s) at equally spaced s point
+plot(out$sgrid,out$gs.est,type="l",xlab = "Surrogate Marker", ylab = "Optimal Transformation")
 
 ```
+The PTE result indicates that this is a moderate to high surrogate marker in this setting.
+
+
+## Some explanations
+
+The observable data for analysis consist of $n$ sets of independent and identically distributed random vectors $\{D_i = (X_i,\ \delta_i,\ S_i I(X_i \ge t_0),\ A_i),\ i = 1, ..., n\}$, where $T_i = T_i^{(1)}A_i + T_i^{(0)}(1-A_i)$, $C_i = C_i^{(1)}A_i + C_i^{(0)}(1-A_i)$, $X_i=min(T_i, C_i)$, the primary outcome $Y_i=I(X_i>t)$, the surrogate $S_i = S_i^{(1)}A_i + S_i^{(0)}(1-A_i)$ is only observed for those with $X_i \ge t_0$. 
+
+The function outputs estimates (and standard error estimates and confidence intervals if indicated) of $PTE =\Delta_{g_{opt}(S)} / \Delta$, a version of the proportion of treatment effect explained quantity based on the ratio between the treatment effect on the optimal transformation of the potential surrogate marker and the treatment effect on the primary outcome, where $\Delta$ is the true treatment effect on the primary outcome $Y$; $\Delta_{g_{opt}(S)}$ is the treatment effect on the optimal transformation of the surrogate $g_{opt}(S)=I(T\leq t_0)\ g_{1, opt}+I(T>t_0)\ g_{2, opt}\approx I(T>t_0)\ g_{2, opt}$.
 
 
 ## Citation
 
 Wang X, Cai T, Tian L, Bourgeois F, Parast L. Quantifying the Feasibility of Shortening Clinical Trial Duration Using Surrogate Markers. Under revision.
-<!-- What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so: -->
 
-<!-- ```{r cars} -->
-<!-- summary(cars) -->
-<!-- ``` -->
 
-<!-- You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/master/examples>. -->
-
-<!-- You can also embed plots, for example: -->
-
-<!-- ```{r pressure, echo = FALSE} -->
-<!-- plot(pressure) -->
-<!-- ``` -->
-
-<!-- In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN. -->
+ 
 
