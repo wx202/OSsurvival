@@ -13,12 +13,12 @@ knitr::opts_chunk$set(
 )
 ```
 
-# OptSurrogateSurv
+# OptSurrogateSurv: Quantifying the Feasibility of Shortening Clinical Trial Duration Using Surrogate Markers
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of OptSurrogateSurv is to nonparametrically estimate the PTE (proportion of treatment on the primary outcome explained) of an optimally transformation of surrogate marker measured at an earlier time. The primary outcome measured at a later time is subject to censoring.
+The goal of OptSurrogateSurv is to nonparametrically estimate the PTE (proportion of treatment on the primary outcome explained) by an optimally transformation of surrogate marker measured at an earlier time. The primary outcome measured at a later time is subject to censoring.
 
 ## Installation
 
@@ -52,6 +52,10 @@ out$pte.est
 
 ```
 
+
+## Citation
+
+Wang X, Cai T, Tian L, Bourgeois F, Parast L. Quantifying the Feasibility of Shortening Clinical Trial Duration Using Surrogate Markers. Under revision.
 <!-- What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so: -->
 
 <!-- ```{r cars} -->
@@ -67,3 +71,4 @@ out$pte.est
 <!-- ``` -->
 
 <!-- In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN. -->
+

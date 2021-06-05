@@ -1,10 +1,10 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-# OptSurrogateSurv
+# OptSurrogateSurv: Quantifying the Feasibility of Shortening Clinical Trial Duration Using Surrogate Markers
 
 <!-- badges: start -->
 <!-- badges: end -->
-The goal of OptSurrogateSurv is to nonparametrically estimate the PTE (proportion of treatment on the primary outcome explained) of an optimally transformation of surrogate marker measured at an earlier time. The primary outcome measured at a later time is subject to censoring.
+The goal of OptSurrogateSurv is to nonparametrically estimate the PTE (proportion of treatment on the primary outcome explained) by an optimally transformation of surrogate marker measured at an earlier time. The primary outcome measured at a later time is subject to censoring.
 
 ## Installation
 
@@ -33,10 +33,13 @@ aob=data.example$data$aob
 
 out=pte.survival(xob,s.ob,deltaob,aob,t,t.0,varind=1,re=10)
 out$pte.est
-#> [1] 0.8493845
+#> [1] 0.8413843
 ```
 
-<!-- What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so: -->
+## Citation
+
+Wang X, Cai T, Tian L, Bourgeois F, Parast L. Quantifying the Feasibility of Shortening Clinical Trial Duration Using Surrogate Markers. Under revision. <!-- What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so: -->
+
 <!-- ```{r cars} -->
 <!-- summary(cars) -->
 <!-- ``` -->
