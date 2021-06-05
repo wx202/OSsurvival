@@ -4,7 +4,7 @@
 
 <!-- badges: start -->
 <!-- badges: end -->
-The goal of OptSurrogateSurv is to nonparametrically estimate the PTE (proportion of treatment on the primary outcome explained) by an optimally transformation of surrogate marker measured at an earlier time. The primary outcome measured at a later time is subject to censoring.
+The goal of OptSurrogateSurv is to nonparametrically estimate the PTE (proportion of treatment on the primary outcome explained) by an optimally transformation of surrogate marker measured at an earlier time. The primary outcome measured at a later time may be subject to censoring.
 
 ## Installation
 
