@@ -1,10 +1,10 @@
 Package: OptSurrogateSurv
-Title: What the Package Does (One Line, Title Case)
+Title: PTE (proportion of treatment explained) estimate for optimally-transformed surrogate with censored primary outcome
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Xuan",
            family = "Wang",
-           role = c("aut", "cre"),
+           role = c("aut"),
            email = "xwang@hsph.harvard.edu",
            comment = c(ORCID = " "))
 Description: Estimate the PTE (proportion of treatment explained) for optimally transformed surrogate with censored primary outcome.
