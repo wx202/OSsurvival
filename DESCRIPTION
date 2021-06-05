@@ -4,7 +4,7 @@ Version: 0.0.0.9000
 Authors@R: 
     person(given = "Xuan",
            family = "Wang",
-           role = c("aut"),
+           role = c("aut","cre"),
            email = "xwang@hsph.harvard.edu",
            comment = c(ORCID = " "))
 Description: Estimate the PTE (proportion of treatment explained) for optimally transformed surrogate with censored primary outcome.
