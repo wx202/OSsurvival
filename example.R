@@ -13,5 +13,3 @@ aob=data.example$data$aob
 
 out=pte.survival(xob,s.ob,deltaob,aob,t,t.0,varind=1,re=10)
 
-
-# git push -f
