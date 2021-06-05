@@ -58,7 +58,8 @@ deltaob=data.example$data$deltaob
 # treatment indicator
 aob=data.example$data$aob
 
-# main estination function, varind: whether to estimate variance; re:number of perturbation for resampling
+# main estimation function
+# varind: whether to estimate variance; re:number of replications for resampling
 out=pte.survival(xob,s.ob,deltaob,aob,t,t.0,varind=0,re=100) 
 # estimated PTE
 out$pte.est
@@ -73,9 +74,9 @@ The PTE result indicates that this is a moderate to high surrogate marker in thi
 
 ## Some explanations
 
-The observable data for analysis consist of $n$ sets of independent and identically distributed random vectors $\{D_i = (X_i,\ \delta_i,\ S_i I(X_i \ge t_0),\ A_i),\ i = 1, ..., n\}$, where $T_i = T_i^{(1)}A_i + T_i^{(0)}(1-A_i)$, $C_i = C_i^{(1)}A_i + C_i^{(0)}(1-A_i)$, $X_i=min(T_i, C_i)$, the primary outcome $Y_i=I(X_i>t)$, the surrogate $S_i = S_i^{(1)}A_i + S_i^{(0)}(1-A_i)$ is only observed for those with $X_i \ge t_0$. 
+The observable data for analysis consist of $n$ sets of independent and identically distributed random vectors $\{D_i = (X_i,\ \delta_i,\ S_i I(X_i \ge t_0),\ A_i),\ i = 1, ..., n\}$, where $T_i = T_i^{(1)}A_i + T_i^{(0)}(1-A_i)$, $C_i = C_i^{(1)}A_i + C_i^{(0)}(1-A_i)$, $X_i=min(T_i, C_i)$, the primary outcome $Y_i=I(X_i>t)$, the surrogate $S_i = S_i^{(1)}A_i + S_i^{(0)}(1-A_i)$ is only observed for those with $X_i > t_0$. 
 
-The function outputs estimates (and standard error estimates and confidence intervals if indicated) of $PTE =\Delta_{g_{opt}(S)} / \Delta$, a version of the proportion of treatment effect explained quantity based on the ratio between the treatment effect on the optimal transformation of the potential surrogate marker and the treatment effect on the primary outcome, where $\Delta$ is the true treatment effect on the primary outcome $Y$; $\Delta_{g_{opt}(S)}$ is the treatment effect on the optimal transformation of the surrogate $g_{opt}(S)=I(T\leq t_0)\ g_{1, opt}+I(T>t_0)\ g_{2, opt}\approx I(T>t_0)\ g_{2, opt}$.
+The function outputs estimates (and standard error estimates if indicated) of $PTE =\Delta_{g_{opt}(S)} / \Delta$, the proportion of treatment effect explained quantity based on the ratio between the treatment effect on the optimal transformation of the potential surrogate marker and the treatment effect on the primary outcome, where $\Delta$ is the treatment effect on the primary outcome $Y$; $\Delta_{g_{opt}(S)}$ is the treatment effect on the optimal transformation of the surrogate $g_{opt}(S)=I(T\leq t_0)\ g_{1, opt}+I(T>t_0)\ g_{2, opt}\approx I(T>t_0)\ g_{2, opt}$.
 
 
 ## Citation

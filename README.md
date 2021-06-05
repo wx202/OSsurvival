@@ -41,7 +41,8 @@ deltaob=data.example$data$deltaob
 # treatment indicator
 aob=data.example$data$aob
 
-# main estination function, varind: whether to estimate variance; re:number of perturbation for resampling
+# main estimation function
+# varind: whether to estimate variance; re:number of replications for resampling
 out=pte.survival(xob,s.ob,deltaob,aob,t,t.0,varind=0,re=100) 
 # estimated PTE
 out$pte.est
@@ -53,18 +54,13 @@ out$g1.est
 plot(out$sgrid,out$gs.est,type="l",xlab = "Surrogate Marker", ylab = "Optimal Transformation")
 ```
 
-<img src="man/figures/README-example-1.png" width="100%" />
-
-``` r
-
-# The PTE result indicates that this is a moderate to higher surrogate marker in this setting.
-```
+<img src="man/figures/README-example-1.png" width="100%" /> The PTE result indicates that this is a moderate to high surrogate marker in this setting.
 
 ## Some explanations
 
-The observable data for analysis consist of *n* sets of independent and identically distributed random vectors {*D*<sub>*i*</sub> = (*X*<sub>*i*</sub>,  *δ*<sub>*i*</sub>,  *S*<sub>*i*</sub>*I*(*X*<sub>*i*</sub> ≥ *t*<sub>0</sub>), *A*<sub>*i*</sub>), *i* = 1, ..., *n*}, where *T*<sub>*i*</sub> = *T*<sub>*i*</sub><sup>(1)</sup>*A*<sub>*i*</sub> + *T*<sub>*i*</sub><sup>(0)</sup>(1 − *A*<sub>*i*</sub>), *C*<sub>*i*</sub> = *C*<sub>*i*</sub><sup>(1)</sup>*A*<sub>*i*</sub> + *C*<sub>*i*</sub><sup>(0)</sup>(1 − *A*<sub>*i*</sub>), *X*<sub>*i*</sub> = *m**i**n*(*T*<sub>*i*</sub>, *C*<sub>*i*</sub>), the primary outcome *Y*<sub>*i*</sub> = *I*(*X*<sub>*i*</sub> &gt; *t*), the surrogate *S*<sub>*i*</sub> = *S*<sub>*i*</sub><sup>(1)</sup>*A*<sub>*i*</sub> + *S*<sub>*i*</sub><sup>(0)</sup>(1 − *A*<sub>*i*</sub>) is only observed for those with *X*<sub>*i*</sub> ≥ *t*<sub>0</sub>.
+The observable data for analysis consist of *n* sets of independent and identically distributed random vectors {*D*<sub>*i*</sub> = (*X*<sub>*i*</sub>,  *δ*<sub>*i*</sub>,  *S*<sub>*i*</sub>*I*(*X*<sub>*i*</sub> ≥ *t*<sub>0</sub>), *A*<sub>*i*</sub>), *i* = 1, ..., *n*}, where *T*<sub>*i*</sub> = *T*<sub>*i*</sub><sup>(1)</sup>*A*<sub>*i*</sub> + *T*<sub>*i*</sub><sup>(0)</sup>(1 − *A*<sub>*i*</sub>), *C*<sub>*i*</sub> = *C*<sub>*i*</sub><sup>(1)</sup>*A*<sub>*i*</sub> + *C*<sub>*i*</sub><sup>(0)</sup>(1 − *A*<sub>*i*</sub>), *X*<sub>*i*</sub> = *m**i**n*(*T*<sub>*i*</sub>, *C*<sub>*i*</sub>), the primary outcome *Y*<sub>*i*</sub> = *I*(*X*<sub>*i*</sub> &gt; *t*), the surrogate *S*<sub>*i*</sub> = *S*<sub>*i*</sub><sup>(1)</sup>*A*<sub>*i*</sub> + *S*<sub>*i*</sub><sup>(0)</sup>(1 − *A*<sub>*i*</sub>) is only observed for those with *X*<sub>*i*</sub> &gt; *t*<sub>0</sub>.
 
-The function outputs estimates (and standard error estimates and confidence intervals if indicated) of *P**T**E* = *Δ*<sub>*g*<sub>*o**p**t*</sub>(*S*)</sub>/*Δ*, a version of the proportion of treatment effect explained quantity based on the ratio between the treatment effect on the optimal transformation of the potential surrogate marker and the treatment effect on the primary outcome, where *Δ* is the true treatment effect on the primary outcome *Y*; *Δ*<sub>*g*<sub>*o**p**t*</sub>(*S*)</sub> is the treatment effect on the optimal transformation of the surrogate *g*<sub>*o**p**t*</sub>(*S*)=*I*(*T* ≤ *t*<sub>0</sub>) *g*<sub>1, *o**p**t*</sub> + *I*(*T* &gt; *t*<sub>0</sub>) *g*<sub>2, *o**p**t*</sub> ≈ *I*(*T* &gt; *t*<sub>0</sub>) *g*<sub>2, *o**p**t*</sub>.
+The function outputs estimates (and standard error estimates if indicated) of *P**T**E* = *Δ*<sub>*g*<sub>*o**p**t*</sub>(*S*)</sub>/*Δ*, the proportion of treatment effect explained quantity based on the ratio between the treatment effect on the optimal transformation of the potential surrogate marker and the treatment effect on the primary outcome, where *Δ* is the treatment effect on the primary outcome *Y*; *Δ*<sub>*g*<sub>*o**p**t*</sub>(*S*)</sub> is the treatment effect on the optimal transformation of the surrogate *g*<sub>*o**p**t*</sub>(*S*)=*I*(*T* ≤ *t*<sub>0</sub>) *g*<sub>1, *o**p**t*</sub> + *I*(*T* &gt; *t*<sub>0</sub>) *g*<sub>2, *o**p**t*</sub> ≈ *I*(*T* &gt; *t*<sub>0</sub>) *g*<sub>2, *o**p**t*</sub>.
 
 ## Citation
 
